@@ -1,0 +1,108 @@
+$loader-color: #354a60;
+$loader-border: 1vw;
+
+.with-loader {
+    overflow: hidden;
+}
+
+.loader {
+    background-color: $loader-color;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+    @include tr;
+
+    .with-loader & {
+        opacity: 1;
+    }
+
+    &__outer {
+        width: 30%;
+        padding: 0;
+        padding-top: 30%;
+        border: $loader-border solid #fff;
+        border-radius: 50%;
+        @include pcenter;
+        box-sizing: content-box;
+        overflow: hidden;
+    }
+
+    &__inner {
+        height: 100%;
+        width: 100%;
+        border: $loader-border solid $loader-color;
+        border-radius: 50%;
+        background-color: #fff;
+        @include pcenter;
+    }
+
+    &__group {
+        height: 100%;
+        width: 100%;
+        @include pcenter;
+        top: -10%;
+        animation-duration: 6s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        transform-origin: 0 0;
+
+        .with-loader & {
+            animation-name: rotate;
+        }
+    }
+
+    &__item {
+        background-color: $loader-color;
+        width: 120%;
+        padding-top: 120%;
+        border-radius: 50%;
+        @include pcenter;
+
+        &:nth-child(1) {
+            left: 35%;
+        }
+
+        &:nth-child(2) {
+            left: 60%;
+            top: 35%;
+        }
+
+        &:nth-child(3) {
+            left: 40%;
+            top: 35%;
+        }
+
+        &:nth-child(4) {
+            left: 50%;
+            top: 60%;
+        }
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) translate(-50%, -50%);
+    }
+
+    to {
+        transform: rotate(360deg) translate(-50%, -50%);
+    }
+}
+
+
+// html ->
+// <div class="loader">
+// <div class="loader__outer">
+//     <div class="loader__inner">
+//         <div class="loader__group">
+//             <div class="loader__item"></div>
+//             <div class="loader__item"></div>
+//             <div class="loader__item"></div>
+//             <div class="loader__item"></div>
+//         </div>
+//     </div>
+// </div>
+// </div>

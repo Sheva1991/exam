@@ -1,0 +1,38 @@
+.socials {
+    padding: 0;
+    list-style: none;
+}
+
+.social {
+    display: inline-block;
+    margin: 0 2px;
+
+    &__link {
+        display: inline-block;
+        text-decoration: none;
+        color: $text-color;
+        width: 55px;
+        height: 55px;
+        line-height: 55px;
+        border: 2px solid $title-color;
+        border-radius: 50%;
+        text-align: center;
+        background-color: #55acee;
+
+        &--blue {
+            background-color: #0976b4;
+        }
+
+        &--pink {
+            background-color: #ea4c89;
+        }
+
+        &--sky {
+            background-color: #1769ff;
+        }
+
+        @include hfa {
+            transform: scale(1.2);
+        }
+    }
+}

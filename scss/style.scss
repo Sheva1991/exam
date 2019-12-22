@@ -1,0 +1,385 @@
+@import 'normalize';
+@import 'variables';
+@import 'mixins';
+@import 'socials';
+// @import 'slider';
+// @import 'animate';
+// @import 'loader';
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    font-size: 10px;
+}
+
+body {
+    min-height: 100%;
+    @include font($text-size, $text-color, 400, $text-ff, 1.6);
+}
+
+.container {
+    max-width: 1040px;
+    margin: 0 auto;
+}
+
+.header {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(60, 73, 85, 0.6)), url(../img/computer.jpg);
+    background-color: rgba(60, 73, 85, 0.3);
+    background-position: center;
+    background-size: cover;
+    padding: 40px 0;
+    text-align: center;
+
+    &__nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        @include font($h1-size, $text-color, 700, $title-ff, 1.2);
+        text-transform: uppercase;
+        margin: 10px;
+        margin-top: 150px;
+    }
+
+    &__text {
+        @include font($h2-size, $text-color, 400, $title-ff, 1.2);
+        text-transform: uppercase;
+        margin: 10px;
+        margin-bottom: 25px;
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
+.menu {
+    display: flex;
+    flex-basis: 50%;
+    justify-content: space-between;
+    list-style-type: none;
+    outline: none;
+
+    &__link {
+        text-decoration: none;
+        color: $text-color;
+
+        &--portf {
+            @include font($text-size, $title-color, 700, $text-ff, 1.2);
+            margin-right: 10px;
+        }
+
+        @include hfa {
+            color: $brand-color;
+        }
+
+        &:last-child .menu__item {
+            border: none;
+        }
+    }
+
+    &__item {
+        padding: 1px 40px;
+        border-right: 1px solid rgba(255, 255, 255, .3);
+
+        &--portf {
+            padding: 5px 20px;
+            background-color: #eaeaea;
+
+            @include hfa {
+                background-color: $brand-color;
+                color: $text-color;
+            }
+        }
+    }
+
+    &--portf {
+        justify-content: center;
+    }
+
+}
+
+.btn {
+    @include font($text-size, $brand-color, 700, $text-ff, 1.2);
+    border: 2px solid $brand-color;
+    border-radius: 3px;
+    padding: 10px 20px;
+    background-color: transparent;
+    text-transform: uppercase;
+    margin: 40px 0;
+    cursor: pointer;
+    outline: none;
+
+    @include hfa {
+        color: $text-color;
+        background-color: $brand-color;
+    }
+
+    &--webdes {
+        border: 2px solid $title-color;
+        color: $title-color;
+
+        @include hfa {
+            color: $text-color;
+            border-color: $text-color;
+            background-color: transparent;
+        }
+    }
+
+    &--contact {
+        background-color: $brand-color;
+        color: $text-color;
+        width: 100%;
+        margin: 0;
+
+        @include hfa {
+            background-color: $text-color;
+            color: $brand-color;
+        }
+    }
+}
+
+.portfolio {
+    margin: 50px 0 80px 0;
+}
+
+.grid {
+    margin-top: 30px;
+    height: 830px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: "grid__item1 grid__item1 grid__item2 grid__item2 grid__item2""grid__item1 grid__item1 grid__item2 grid__item2 grid__item2""grid__item3 grid__item3 grid__item2 grid__item2 grid__item2""grid__item3 grid__item3 grid__item4 grid__item4 grid__item4""grid__item3 grid__item3 grid__item4 grid__item4 grid__item4";
+    gap: 40px;
+    padding: 20px;
+
+    &__item {
+        background-color: rgba(60, 73, 85, 0.3);
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transition: all .4s ease-in;
+
+        &--1 {
+            grid-area: grid__item1;
+            background: url(../img/img1.jpg);
+            background-position: center;
+            background-size: cover;
+
+            @include hfa {
+                background: linear-gradient(rgba(72, 191, 114, .8)), url(../img/img1.jpg);
+                background-position: center;
+                background-size: cover;
+            }
+        }
+
+        &--2 {
+            grid-area: grid__item2;
+            background: url(../img/img2.jpg);
+            background-position: center;
+            background-size: cover;
+
+            @include hfa {
+                background: linear-gradient(rgba(72, 191, 114, .8)), url(../img/img2.jpg);
+                background-position: center;
+                background-size: cover;
+            }
+        }
+
+        &--3 {
+            grid-area: grid__item3;
+            background: url(../img/img3.jpg);
+            background-position: center;
+            background-size: cover;
+
+            @include hfa {
+                background: linear-gradient(rgba(72, 191, 114, .8)), url(../img/img3.jpg);
+                background-position: center;
+                background-size: cover;
+            }
+        }
+
+        &--4 {
+            grid-area: grid__item4;
+            background: url(../img/img4.jpg);
+            background-position: center;
+            background-size: cover;
+
+            @include hfa {
+                background: linear-gradient(rgba(72, 191, 114, .8)), url(../img/img4.jpg);
+                background-position: center;
+                background-size: cover;
+            }
+        }
+
+        @include hfa {
+            cursor: pointer;
+        }
+
+        &:hover .grid__title,
+        &:focus .grid__title,
+        &:active .grid__title {
+            display: block;
+        }
+
+        &:hover .grid__text,
+        &:focus .grid__text,
+        &:active .grid__text {
+            display: block;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        display: none;
+    }
+
+    &__text {
+        display: none;
+
+        p {
+            margin: 0;
+        }
+    }
+
+}
+
+.webdes {
+    background: linear-gradient(rgba(60, 73, 85, 0.6)), url(../img/men-computer.jpg);
+    background-color: rgba(60, 73, 85, 0.6);
+    background-position: center;
+    background-size: cover;
+    padding: 80px 120px;
+
+    &>.container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__block {
+        width: 40%;
+        text-align-last: left;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    &__title {
+        @include font($h2-size, $text-color, 700, $text-ff, 1.2);
+        margin: 0;
+    }
+
+    &__subtitle {
+        @include font($h3-size, $text-color, 400, $text-ff, 1.2);
+        margin: 0;
+    }
+
+    &__text {
+        @include font($text-size, $text-color, 400, $text-ff, 1.2);
+    }
+}
+
+.contact {
+    padding: 50px;
+}
+
+.form {
+    padding: 0 220px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__data {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__title {
+        @include font($h3-size, $brand-color, 700, $title-ff, 1.2);
+        margin-bottom: 40px;
+    }
+
+    &__item {
+        flex-basis: 48%;
+        position: relative;
+
+        &--t {
+            width: 100%;
+        }
+
+        &>.form__iconwrap {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            left: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        &:hover .form__iconwrap,
+        &:focus .form__iconwrap,
+        &:active .form__iconwrap {
+            display: none;
+        }
+    }
+
+    &__input {
+        width: 100%;
+        padding: 16px;
+        border: 2px solid $title-color;
+        border-left: 50px solid $title-color;
+        border-radius: 5px;
+        margin-bottom: 30px;
+        outline: none;
+
+
+        &--t {
+            resize: none;
+        }
+
+        @include hfa {
+            border: 2px solid $brand-color;
+            border-radius: 5px;
+        }
+
+    }
+}
+
+
+.footer {
+    background: $title-color;
+    padding: 50px 10px;
+
+    &>.container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__text {
+        @include font($text-size, $text-color, 400, $text-ff, 1.2);
+    }
+
+    &__link {
+        @include font($text-size, $text-color, 700, $text-ff, 1.2);
+        text-decoration: none;
+
+        @include hfa {
+            color: $brand-color;
+        }
+    }
+}
