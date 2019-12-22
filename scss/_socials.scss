@@ -31,6 +31,13 @@
             background-color: #1769ff;
         }
 
+        @supports (clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)) {
+            & {
+                border-radius: 0;
+                clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            }
+        }
+
         @include hfa {
             transform: scale(1.2);
         }
