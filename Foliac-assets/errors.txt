@@ -1,1 +1,1 @@
-[2019-12-22 13:34:09] layer "Copyright © 2015 by beneggen - www.beneggen.fr": Unsupported extension: fr
+[2020-1-8 12:29:41] layer "Copyright © 2015 by beneggen - www.beneggen.fr": Unsupported extension: fr

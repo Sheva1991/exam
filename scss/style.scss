@@ -2,9 +2,6 @@
 @import 'variables';
 @import 'mixins';
 @import 'socials';
-// @import 'slider';
-// @import 'animate';
-// @import 'loader';
 
 * {
     box-sizing: border-box;
@@ -23,6 +20,7 @@ body {
 .container {
     max-width: 1040px;
     margin: 0 auto;
+    padding: 40px 0;
 }
 
 .header {
@@ -31,7 +29,6 @@ body {
     background-color: rgba(60, 73, 85, 0.3);
     background-position: center;
     background-size: cover;
-    padding: 40px 0;
     text-align: center;
 
     &__nav {
@@ -66,31 +63,49 @@ body {
     list-style-type: none;
     outline: none;
 
-    &__link {
-        text-decoration: none;
-        color: $text-color;
+    &__item {
+        display: flex;
+        position: relative;
+
+        &:after {
+            content: '';
+            display: inline-block;
+            position: absolute;
+            height: 20px;
+            right: 0;
+            top: 3px;
+            transform: rotate(20deg);
+            border-right: 1px solid rgba(255, 255, 255, .3);
+        }
+
+        &:last-child:after {
+            display: none;
+        }
 
         &--portf {
-            @include font($text-size, $title-color, 700, $text-ff, 1.2);
             margin-right: 10px;
         }
+
+        &--portf:after {
+            display: none;
+        }
+    }
+
+    &__link {
+        padding: 5px 40px;
+        text-decoration: none;
+        @include font($text-size, $text-color, 700, $text-ff, 1);
 
         @include hfa {
             color: $brand-color;
         }
 
-        &:last-child .menu__item {
-            border: none;
-        }
-    }
-
-    &__item {
-        padding: 1px 40px;
-        border-right: 1px solid rgba(255, 255, 255, .3);
-
         &--portf {
-            padding: 5px 20px;
+            padding: 10px 20px;
+            line-height: 1.2;
+            color: $title-color;
             background-color: #eaeaea;
+            border-radius: 5px;
 
             @include hfa {
                 background-color: $brand-color;
@@ -102,14 +117,15 @@ body {
     &--portf {
         justify-content: center;
     }
-
 }
 
 .btn {
+    display: inline-block;
     @include font($text-size, $brand-color, 700, $text-ff, 1.2);
     border: 2px solid $brand-color;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 10px 20px;
+    text-decoration: none;
     background-color: transparent;
     text-transform: uppercase;
     margin: 40px 0;
@@ -145,10 +161,6 @@ body {
     }
 }
 
-.portfolio {
-    margin: 50px 0 80px 0;
-}
-
 .grid {
     margin-top: 30px;
     height: 830px;
@@ -166,7 +178,9 @@ body {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        transition: all .4s ease-in;
+        text-decoration: none;
+        text-align: center;
+        padding: 30px;
 
         &--1 {
             grid-area: grid__item1;
@@ -227,23 +241,31 @@ body {
         &:hover .grid__title,
         &:focus .grid__title,
         &:active .grid__title {
-            display: block;
+            opacity: 1;
+            transition: all .4s ease-in;
         }
 
         &:hover .grid__text,
         &:focus .grid__text,
         &:active .grid__text {
-            display: block;
+            opacity: 1;
+            transition: all .4s ease-in;
         }
     }
 
     &__title {
+        @include font($h2-size, $text-color, 700, $text-ff, 1.2);
+        max-height: 108px;
+        overflow: hidden;
         margin: 0;
-        display: none;
+        opacity: 0;
     }
 
     &__text {
-        display: none;
+        @include font($text-size, $text-color, 400, $text-ff, 1.2);
+        opacity: 0;
+        max-height: 60px;
+        overflow: hidden;
 
         p {
             margin: 0;
@@ -257,7 +279,6 @@ body {
     background-color: rgba(60, 73, 85, 0.6);
     background-position: center;
     background-size: cover;
-    padding: 80px 120px;
 
     &>.container {
         display: flex;
@@ -265,7 +286,7 @@ body {
     }
 
     &__block {
-        width: 40%;
+        width: 45%;
         text-align-last: left;
         display: flex;
         flex-direction: column;
@@ -284,12 +305,8 @@ body {
     }
 
     &__text {
-        @include font($text-size, $text-color, 400, $text-ff, 1.2);
+        line-height: 1.2;
     }
-}
-
-.contact {
-    padding: 50px;
 }
 
 .form {
@@ -307,7 +324,8 @@ body {
 
     &__title {
         @include font($h3-size, $brand-color, 700, $title-ff, 1.2);
-        margin-bottom: 40px;
+        margin: 0;
+        margin-bottom: 50px;
     }
 
     &__item {
@@ -329,13 +347,6 @@ body {
             justify-content: center;
             align-items: center;
         }
-
-        &:hover .form__iconwrap,
-        &:focus .form__iconwrap,
-        &:active .form__iconwrap {
-            display: none;
-        }
-
     }
 
     &__input {
@@ -346,7 +357,7 @@ body {
         border-radius: 5px;
         margin-bottom: 30px;
         outline: none;
-
+        transition: all .4s ease-in;
 
         &--t {
             resize: none;
@@ -357,13 +368,44 @@ body {
             border-radius: 5px;
         }
 
+        &:hover+.form__iconwrap,
+        &:focus+.form__iconwrap,
+        &:active+.form__iconwrap {
+            display: none;
+        }
+
     }
+}
+
+// placeholder
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #a6a5a5;
+    font-size: $text-size;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #a6a5a5;
+    font-size: $text-size;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #a6a5a5;
+    font-size: $text-size;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: #a6a5a5;
+    font-size: $text-size;
 }
 
 
 .footer {
     background: $title-color;
-    padding: 50px 10px;
 
     &>.container {
         display: flex;

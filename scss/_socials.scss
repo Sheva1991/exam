@@ -8,38 +8,80 @@
     margin: 0 2px;
 
     &__link {
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         text-decoration: none;
         color: $text-color;
-        width: 55px;
-        height: 55px;
-        line-height: 55px;
-        border: 2px solid $title-color;
-        border-radius: 50%;
-        text-align: center;
-        background-color: #55acee;
+        font-size: 20px;
+        width: 50px;
+        height: 25px;
+        background: #55acee;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 15.1px solid #55acee;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-top: 15.1px solid #55acee;
+        }
 
         &--blue {
             background-color: #0976b4;
+
+            &:after {
+                border-top-color: #0976b4;
+            }
+
+            &:before {
+                border-bottom-color: #0976b4;
+            }
         }
 
         &--pink {
             background-color: #ea4c89;
+
+            &:after {
+                border-top-color: #ea4c89;
+            }
+
+            &:before {
+                border-bottom-color: #ea4c89;
+            }
         }
 
         &--sky {
             background-color: #1769ff;
-        }
 
-        @supports (clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)) {
-            & {
-                border-radius: 0;
-                clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+            &:after {
+                border-top-color: #1769ff;
+            }
+
+            &:before {
+                border-bottom-color: #1769ff;
             }
         }
 
         @include hfa {
-            transform: scale(1.2);
+            color: $title-color;
+            transform: rotate(360deg);
         }
     }
 }
